@@ -96,3 +96,17 @@ html, body {
 #inputContainer button:hover{
   cursor: pointer;
 }
+
+.hasAccountText span{
+  font-weight: bold !important;
+  font-size: 12px;
+  cursor: pointer;
+}
+.hasAccountText{
+  text-align: center;
+}
+
+#registerForm,
+#loginForm {
+  display: none;
+}

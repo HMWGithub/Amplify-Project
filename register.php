@@ -24,8 +24,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Beatify</title>
   <link rel="stylesheet" href="assets/css/register.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="assets/js/register.js"></script>
 </head>
 <body>
+  <?php
+    if(isset($_POST['register'])){
+      echo '<script>
+              $(document).ready(function(){
+                $("#registerForm").show();
+                $("#loginForm").hide();
+              });
+            </script>';
+    } else {
+      echo '<script>
+              $(document).ready(function(){
+                $("#loginForm").show();
+                $("#registerForm").hide();
+              });
+            </script>';
+    }
+  ?>
   <div id="background">
     <div id="loginContainer">
       <div id="inputContainer">
@@ -43,6 +62,10 @@
           </p>
 
           <button type="submit" name="login">LOG IN</button>
+
+          <div class="hasAccountText">
+            <a href="#" ><span id="loginHide">Don't have an account yet? Sign up here</span></a>
+          </div>
         </form> <!-- END -->
 
         <!-- REGISTER FORM -->
@@ -88,6 +111,9 @@
           </p>
 
           <button type="submit" name="register">SIGN UP</button>
+          <div class="hasAccountText">
+            <a href="#" ><span id="registerHide">Already have an account yet? Log in here</span></a>
+          </div>
         </form> <!-- END -->
       </div>
     </div>
