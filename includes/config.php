@@ -3,7 +3,7 @@
   session_start();
 
   $timezone = date_default_timezone_set("Europe/London");
-  $connection = mysqli_connect("localhost", "root", "", "Beatify");
+  $connection = mysqli_connect("localhost", "root", "", "Amplify");
 
   if(mysqli_connect_errno()){
     echo "Failed to connect: " . $mysqli_connect_errno();

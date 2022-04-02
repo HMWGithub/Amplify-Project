@@ -22,7 +22,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Beatify</title>
+  <title>Welcome to Amplify!</title>
   <link rel="stylesheet" href="assets/css/register.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="assets/js/register.js"></script>
@@ -54,7 +54,7 @@
           <p>
             <p><?php echo $account->getError(Constants::$loginFailed); ?></p>
             <label for="loginUsername">Username</label>
-            <input id="loginUsername" name="loginUsername" type="text" placeholder="e.g. beatifyUser123" required>
+            <input id="loginUsername" name="loginUsername" type="text" placeholder="e.g. AmplifyUser123" value="<?php echo getInputValue('loginUsername')?>" required>
           </p>
           <p>
             <label for="loginPassword">Password</label>
@@ -75,7 +75,7 @@
             <p><?php echo $account->getError(Constants::$usernameInvalidLength); ?></p>
             <p><?php echo $account->getError(Constants::$usernameTaken); ?></p>
             <label for="registerUsername">Username</label>
-            <input id="registerUsername" name="registerUsername" type="text" placeholder="e.g. beatifyUser123" value="<?php getInputValue('registerUsername')?>" required>
+            <input id="registerUsername" name="registerUsername" type="text" placeholder="e.g. AmplifyUser123" value="<?php getInputValue('registerUsername')?>" required>
           </p>
           <p>
             <p><?php echo $account->getError(Constants::$firstNameInvalidLength); ?></p>
@@ -115,6 +115,15 @@
             <a href="#" ><span id="registerHide">Already have an account yet? Log in here</span></a>
           </div>
         </form> <!-- END -->
+      </div>
+      <div id="loginText">
+        <h1>Get great music, right now</h1>
+        <h2>Listen to loads of songs for free.</h2>
+        <ul>
+          <li>Discover music you'll fall in love with</li>
+          <li>Create your own playlists</li>
+          <li>Follow artists to keep up to date</li>
+        </ul>
       </div>
     </div>
   </div>
