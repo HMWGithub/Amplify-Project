@@ -8,6 +8,18 @@
       $this->errorArray = array();
     }
 
+    public function login($un, $pw){
+      $pw = md5($pw);
+      $query = mysqli_query($this->connection, "SELECT * FROM users WHERE username='$un' AND password='$pw'");
+
+      if(mysqli_num_rows($query)){
+        return true;
+      } else {
+        array_push($this->errorArray, Constants::$loginFailed);
+        return false;
+      }
+    }
+
     public function register($un, $fn, $ln, $em, $em2, $pw, $pw2){
       $this->validateUsername($un);
       $this->validateFirstName($fn);
