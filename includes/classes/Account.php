@@ -1,8 +1,10 @@
 <?php
   class Account {
+    private $connection;
     private $errorArray;
 
-    public function __construct(){
+    public function __construct($connection){
+      $this->connection = $connection;
       $this->errorArray = array();
     }
 
@@ -13,7 +15,7 @@
       $this->validateEmail($em, $em2);
       $this->validatePassword($pw, $pw2);
 
-      return empty($this->errorArray) ? true : false;
+      return empty($this->errorArray) ? $this->insertUserDetails($un, $fn, $ln, $em, $pw) : false;
     }
 
     public function getError($error){
@@ -21,6 +23,16 @@
         $error = "";
       }
       return "<span class='errorMessage'>$error</span>";
+    }
+
+    private function insertUserDetails($un, $fn, $ln, $em, $pw){
+      $encryptedPw = md5($pw);
+      $profilePic  = "assets/images/profile-pics/head_emerald.png";
+      $date = date("Y-m-d");
+
+      $result = mysqli_query($this->connection, "INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em', '$encryptedPw', '$date', '$profilePic')");
+
+      return $result;
     }
     
     private function validateUsername($un) {
@@ -30,7 +42,11 @@
         return;
       }
 
-      // TODO: Check if username exists a;ready
+      $checkUsernameQuery = mysqli_query($this->connection, "SELECT username FROM users WHERE username='$un' LIMIT 1");
+      if(mysqli_num_rows($checkUsernameQuery) != 0) {
+        array_push($this->errorArray, Constants::$usernameTaken);
+        return;
+      }
       
     }
 
@@ -58,7 +74,11 @@
         return;
       }
       
-      // TODO: Check if emails exists already
+      $checkUsernameQuery = mysqli_query($this->connection, "SELECT email FROM users WHERE email='$em' LIMIT 1");
+      if(mysqli_num_rows($checkUsernameQuery) != 0) {
+        array_push($this->errorArray, Constants::$emailTaken);
+        return;
+      }
     }
 
     private function validatePassword($pw, $pw2) {

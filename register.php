@@ -3,7 +3,7 @@
   include("includes/classes/Account.php");
   include("includes/classes/Constants.php");
 
-  $account = new Account();
+  $account = new Account($connection);
 
   function getInputValue($name){
     if(isset($_POST[$name])){
@@ -46,6 +46,7 @@
       <h2>Create your free account</h2>
       <p>
         <p><?php echo $account->getError(Constants::$usernameInvalidLength); ?></p>
+        <p><?php echo $account->getError(Constants::$usernameTaken); ?></p>
         <label for="registerUsername">Username</label>
         <input id="registerUsername" name="registerUsername" type="text" placeholder="e.g. beatifyUser123" value="<?php getInputValue('registerUsername')?>" required>
       </p>
@@ -62,6 +63,7 @@
       <p>
         <p><?php echo $account->getError(Constants::$emailsDoNotMatch); ?></p>
         <p><?php echo $account->getError(Constants::$emailInvalidFormat); ?></p>
+        <p><?php echo $account->getError(Constants::$emailTaken); ?></p>
         <label for="registerEmail">Email</label>
         <input id="registerEmail" name="registerEmail" type="email" placeholder="e.g. john@gmail.com" value="<?php echo getInputValue('registerEmail')?>" required>
       </p>
