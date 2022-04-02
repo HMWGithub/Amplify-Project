@@ -14,12 +14,40 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Amplify!</title>
+  <title>Amplify</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
   <div id="mainContainer">
+    <div id="topContainer">
+      <div id="navBarContainer">
+        <nav class="navBar">
+          <a href="index.php" class="logo">
+            <img src="assets/images/icons/logo.png" alt="logo">
+          </a>
+          <div class="group">
+            <div class="navItem">
+              <a href="search.php" class="navItemLink">Search
+                <img src="assets/images/icons/search.png" class="icon" alt="search">
+              </a>
+            </div>
+          </div>
+          <div class="group">
+            <div class="navItem">
+              <a href="browse.php" class="navItemLink">Browse</a>
+            </div>
+            <div class="navItem">
+              <a href="yourMusic.php" class="navItemLink">Your Music</a>
+            </div>
+            <div class="navItem">
+              <a href="profile.php" class="navItemLink">Harrison Max-Wilson</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
     <div id="nowPlayingBarContainer">
       <div id="nowPlayingBar">
         <div id="nowPlayingLeft">
