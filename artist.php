@@ -21,7 +21,7 @@
 </div>
 
 <div class="tracklistContainer borderBottom">
-  <h2> SONGS </h2>
+  <h2>SONGS</h2>
   <ul class="tracklist">
     <?php
       $songIDArray = $artist->getSongIDs();
@@ -62,7 +62,7 @@
 </div>
 
 <div class="gridViewContainer">
-  <h2> ALBUMS </h2>
+  <h2>ALBUMS</h2>
   <?php 
     $albumQuery = mysqli_query($connection, "SELECT * FROM albums WHERE artist='$artistId'");
 
