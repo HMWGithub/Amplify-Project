@@ -65,6 +65,12 @@
   }
 
   function previousSong(){
+    if(repeat == true){
+      audioElement.setTime(0); 
+      playSong();
+      return;
+    }
+    
     if(audioElement.audio.currentTime >= 3 || currentIndex == 0) {
       audioElement.setTime(0);
     } else {
@@ -148,20 +154,22 @@
       $.post("includes/handlers/ajax/getArtistJson.php", {artistID: track.artist}, function(data) {
         var artist = JSON.parse(data);
         $(".artistName span").text(artist.name);
+        $(".artistName span").attr("onclick", "openPage('artist.php?id="+ artist.id +"')");
       });
 
       $.post("includes/handlers/ajax/getAlbumJson.php", {albumID: track.album}, function(data) {
         var album = JSON.parse(data);
         $(".albumLink img").attr("src", album.artworkPath);
+        $(".albumLink img").attr("onclick", "openPage('album.php?id="+ album.id +"')");
+        $(".trackName span").attr("onclick", "openPage('album.php?id="+ album.id +"')");
       });
 
       audioElement.setTrack(track);
-      playSong();
+      
+      if(play){
+        playSong();
+      }
     });
-    
-    if(play == true){
-      playSong();
-    }
   }
 
   function playSong(){
@@ -187,14 +195,14 @@
     <div id="nowPlayingLeft">
       <div class="content">
         <span class="albumLink">
-          <img class="albumArtwork" src="" alt="album link">
+          <img role="link" tabindex="0" class="albumArtwork" src="" alt="album link">
         </span>
         <div class="trackInfo">
           <span class="trackName">
-            <span></span>
+            <span role="link" tabindex="0"></span>
           </span>
           <span class="artistName">
-            <span></span>
+            <span role="link" tabindex="0"></span>
           </span>
         </div>
       </div>
