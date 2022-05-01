@@ -8,10 +8,13 @@
       $this->id = $id;
     }
 
+    public function getId() {
+      return $this->id;
+    }
+
     public function getName(){
       $query = mysqli_query($this->connection, "SELECT name FROM artists WHERE id='$this->id'");
       $artist = mysqli_fetch_array($query);
-
       return $artist['name'];
     }
     
