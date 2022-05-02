@@ -18,7 +18,7 @@
       $username = $userLoggedIn->getUsername();
       $playlistsQuery = mysqli_query($connection, "SELECT * FROM playlists WHERE owner='$username'");
       if(mysqli_num_rows($playlistsQuery) == 0){
-        echo "<span class='noResults'>No playlists exist yet.'</span>";
+        echo "<span class='noResults'>No playlists exist yet.</span>";
       }
 
       while($row = mysqli_fetch_array($playlistsQuery)){
